@@ -12,6 +12,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_select_script = "test_wall_and_paddle.gd"
 _run_on_load = true
 _should_maximize = true
 _show_orphans = false

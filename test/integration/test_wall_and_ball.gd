@@ -17,7 +17,7 @@ func test_ball_bounces_off_wall():
 	
 	yield(yield_for(2), YIELD)
 	
-	assert_gt(ball.get_direction().y, 0)
+	assert_gt(ball.get_direction().y, 0.0)
 	
 	remove_child(wall)
 	remove_child(ball)
