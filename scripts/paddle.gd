@@ -14,7 +14,7 @@ func bounce(ball):
 	ball.set_direction(Vector2(new_x, new_y))
 
 func _draw():
-	var e =	$Shape.shape.extents
+	var e = $Shape.shape.extents
 	draw_rect(Rect2(e.x * -1, e.y * -1, e.x * 2, e.y * 2), Color(1, 1, 1))
 
 func _on_Paddle_area_entered(area):
