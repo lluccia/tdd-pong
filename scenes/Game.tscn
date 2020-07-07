@@ -1,28 +1,63 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/game.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Paddle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/KillBox.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
-position = Vector2( 316.756, 280.356 )
+position = Vector2( 512, 300 )
 
 [node name="TopWall" parent="." instance=ExtResource( 1 )]
-position = Vector2( 330.261, 164.517 )
+position = Vector2( 512, 20 )
 _color = Color( 0.921569, 0.101961, 0.101961, 1 )
 
 [node name="BottomWall" parent="." instance=ExtResource( 1 )]
-position = Vector2( 332.717, 402.698 )
+position = Vector2( 512, 580 )
 _color = Color( 0.0463867, 0.742188, 0.106182, 1 )
 
 [node name="P1Paddle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 135.051, 284.835 )
+position = Vector2( 50, 300 )
 
 [node name="P2Paddle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 502.145, 282.38 )
+position = Vector2( 974, 300 )
+
+[node name="P1KillBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 10, 300 )
+
+[node name="P2KillBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1014, 300 )
+
+[node name="P1Score" type="Label" parent="."]
+margin_left = 115.298
+margin_top = 50.0
+margin_right = 134.298
+margin_bottom = 64.0
+rect_scale = Vector2( 5, 5 )
+text = "99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2Score" type="Label" parent="."]
+margin_left = 800.0
+margin_top = 50.0
+margin_right = 820.0
+margin_bottom = 64.0
+rect_scale = Vector2( 5, 5 )
+text = "99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="P1Paddle" to="P1Paddle" method="_on_Paddle_area_entered"]
 [connection signal="area_entered" from="P2Paddle" to="P2Paddle" method="_on_Paddle_area_entered"]
+[connection signal="kill_ball" from="P1KillBox" to="." method="_on_P1KillBox_kill_ball"]
+[connection signal="kill_ball" from="P2KillBox" to="." method="_on_P2KillBox_kill_ball"]
