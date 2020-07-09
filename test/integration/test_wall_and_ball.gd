@@ -21,3 +21,6 @@ func test_ball_bounces_off_wall():
 	
 	remove_child(wall)
 	remove_child(ball)
+	
+	wall.free()
+	ball.free()

@@ -7,6 +7,9 @@ var ball
 func before_each():
 	ball = Ball.new()
 
+func after_each():
+	ball.free()
+
 func test_can_create_ball():
 	assert_not_null(ball)
 

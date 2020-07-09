@@ -3,13 +3,14 @@ extends Node2D
 signal game_over
 
 var _ball_start_position = null
+var _ball_start_speed = 300
 
 var _p1_score = 0
 var _p2_score = 0
 var _max_score = 10
 
 func _ready():
-	$Ball.set_speed(300)
+	$Ball.set_speed(_ball_start_speed)
 	$Ball.set_direction(Vector2(1, -1))
 	_ball_start_position = $Ball.get_position()
 
@@ -34,13 +35,15 @@ func _process(delta):
 
 func _on_P1KillBox_kill_ball():
 	$Ball.set_position(_ball_start_position)
+	$Ball.set_speed(_ball_start_speed)
 	_p2_score += 1
 	_update_display()
 	if _p2_score == _max_score:
 		_game_over()
-
+		
 func _on_P2KillBox_kill_ball():
 	$Ball.set_position(_ball_start_position)
+	$Ball.set_speed(_ball_start_speed)
 	_p1_score += 1
 	_update_display()
 	if _p1_score == _max_score:

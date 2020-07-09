@@ -10,6 +10,7 @@ func before_each():
 
 func after_each():
 	remove_child(_game)
+	_game.free()
 
 func _p1_scores():
 	_game.get_node("P2KillBox").emit_signal('kill_ball')
@@ -65,6 +66,26 @@ func test_when_p1_scores_then_score_is_updated():
 func test_when_p2_scores_then_score_is_updated():
 	_p2_scores()
 	assert_eq(_game.get_node("P2Score").text, "1")
+
+func test_when_p1_scores_then_ball_speed_is_reset():
+	var ball = _game.get_node("Ball")
+	var initial_speed = ball.get_speed()
+	
+	ball.set_speed(initial_speed + 100)
+
+	_p1_scores()
+
+	assert_eq(ball.get_speed(), initial_speed)
+
+func test_when_p2_scores_then_ball_speed_is_reset():
+	var ball = _game.get_node("Ball")
+	var initial_speed = ball.get_speed()
+	
+	ball.set_speed(initial_speed + 100)
+
+	_p2_scores()
+
+	assert_eq(ball.get_speed(), initial_speed)
 
 func test_when_p1_reaches_max_score_game_over_emmited():
 	watch_signals(_game)

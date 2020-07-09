@@ -21,4 +21,7 @@ func test_wall_and_paddle_can_collide_without_error():
 	
 	remove_child(paddle)
 	remove_child(wall)
+
+	paddle.free()
+	wall.free()
 	
