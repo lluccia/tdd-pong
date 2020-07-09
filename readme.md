@@ -2,7 +2,9 @@
 
 TDD exercise implementing a Pong game in Godot Engine using GUT (Godot Unit Test) following Butch Teaches Typing tutorial.
 
-## Key bindings
+## Game
+
+https://lluccia.github.io/tdd-pong/tdd-pong.html
 
 |key|action            |
 |---|------------------|
